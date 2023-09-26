@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Form</title>
+    <script type="text/javascript">
+      function submitForm() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const website = document.getElementById("website").value;
+        const message = document.getElementById("message").value;
+
+        const formBody = `
+        Name: ${name}
+        Email: ${email}
+        Website: ${website}
+        Message: ${message}
+      `;
+
+        alert("Form Body:\n" + formBody);
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Your name" /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Your email" /><br />
+
+      <label for="website">Website:</label>
+      <input type="text" id="website" placeholder="Your website" /><br />
+
+      <label for="message">Message:</label>
+      <textarea id="message" placeholder="Your message"></textarea><br />
+
+      <input type="button" value="Submit" onclick="submitForm()" />
+    </form>
+  </body>
+</html>

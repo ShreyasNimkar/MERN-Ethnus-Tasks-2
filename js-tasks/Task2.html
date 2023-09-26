@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Alphabetical Order</title>
+    <script type="text/javascript">
+      function sortStringAlphabetically(inputString) {
+        const sortedString = inputString.split("").sort().join("");
+        return sortedString;
+      }
+
+      function handleSort() {
+        const inputString = document.getElementById("inputString").value;
+        const sortedString = sortStringAlphabetically(inputString);
+
+        document.getElementById("originalString").innerHTML =
+          "Original String: " + inputString;
+        document.getElementById("sortedString").innerHTML =
+          "Sorted String: " + sortedString;
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="inputString" placeholder="Enter a string" />
+    <button onclick="handleSort()">Sort Alphabetically</button>
+
+    <div id="originalString"></div>
+    <div id="sortedString"></div>
+  </body>
+</html>

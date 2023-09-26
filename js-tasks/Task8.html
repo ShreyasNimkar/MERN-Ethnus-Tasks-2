@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Form</title>
+    <style>
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+    <form id="registrationForm">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required /><br /><br />
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+      /><br /><br />
+
+      <label for="reenterPassword">Re-enter Password:</label>
+      <input
+        type="password"
+        id="reenterPassword"
+        name="reenterPassword"
+        required
+      /><br /><br />
+
+      <label for="gender">Gender:</label><br />
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">Female</label><br />
+      <input type="radio" id="male" name="gender" value="male" />
+      <label for="male">Male</label><br /><br />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required /><br /><br />
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input
+        type="tel"
+        id="phoneNumber"
+        name="phoneNumber"
+        required
+      /><br /><br />
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" required></textarea><br /><br />
+
+      <label for="state">State:</label>
+      <input type="text" id="state" name="state" required /><br /><br />
+
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" required /><br /><br />
+
+      <label>Languages Known:</label><br />
+      <input type="checkbox" id="english" name="languages" value="English" />
+      <label for="english">English</label><br />
+      <input type="checkbox" id="marathi" name="languages" value="Marathi" />
+      <label for="marathi">Marathi</label><br />
+      <input type="checkbox" id="hindi" name="languages" value="Hindi" />
+      <label for="hindi">Hindi</label><br />
+      <input type="checkbox" id="kannada" name="languages" value="Kannada" />
+      <label for="kannada">Kannada</label><br />
+      <input type="checkbox" id="tamil" name="languages" value="Tamil" />
+      <label for="tamil">Tamil</label><br /><br />
+
+      <label>
+        <input type="checkbox" id="declaration" name="declaration" required />
+        Hereby I declare that all the given details are true. </label
+      ><br /><br />
+
+      <button type="button" onclick="validateAndRegister()">Register</button>
+    </form>
+
+    <script>
+      function validateAndRegister() {
+        const form = document.getElementById("registrationForm");
+        let isValid = true;
+
+        // Check if all required fields are filled
+        for (let i = 0; i < form.elements.length; i++) {
+          if (form.elements[i].hasAttribute("required")) {
+            if (!form.elements[i].value) {
+              isValid = false;
+              break;
+            }
+          }
+        }
+
+        if (isValid) {
+          const password = document.getElementById("password").value;
+          const reenterPassword =
+            document.getElementById("reenterPassword").value;
+
+          if (password === reenterPassword) {
+            const formData = new FormData(form);
+            let formDataString = "Form Data:\n";
+            for (const [key, value] of formData.entries()) {
+              if (key !== "password" && key !== "reenterPassword") {
+                formDataString += `${key}: ${value}\n`;
+              }
+            }
+
+            alert(formDataString);
+          } else {
+            alert("Both passwords do not match.");
+          }
+        } else {
+          alert("Please fill in all required fields.");
+        }
+      }
+    </script>
+  </body>
+</html>

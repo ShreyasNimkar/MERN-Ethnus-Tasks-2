@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Show Date and Time</title>
+    <script type="text/javascript">
+      function showDate() {
+        const options = { year: "numeric", month: "long", day: "numeric" };
+        const currentDate = new Date().toLocaleDateString("en-US", options);
+        document.getElementById("dateDisplay").innerHTML =
+          "Current Date: " + currentDate;
+      }
+
+      function showTime() {
+        const options = {
+          weekday: "long",
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          timeZoneName: "short",
+          timeZone: "Asia/Kolkata",
+        };
+        const currentTime = new Date().toLocaleDateString("en-US", options);
+        document.getElementById("timeDisplay").innerHTML =
+          "Current Time: " + currentTime;
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="showDate()">Show Date</button>
+    <button onclick="showTime()">Show Time</button>
+
+    <div id="dateDisplay"></div>
+    <div id="timeDisplay"></div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rectangle Animation</title>
+    <style>
+      #rectangle {
+        width: 100px;
+        height: 50px;
+
+        position: absolute;
+        top: 50px;
+        left: 50px;
+      }
+      #train {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="rectangle"><img id="train" src="./train.png" alt="" /></div>
+    <button onclick="startTranslation()">Start</button>
+    <button onclick="stopTranslation()">Stop</button>
+
+    <script>
+      let intervalId;
+      const rectangle = document.getElementById("rectangle");
+
+      function startTranslation() {
+        // Reset the position of the rectangle
+        rectangle.style.left = "50px";
+
+        // Start translating the rectangle to the right
+        intervalId = setInterval(translateRectangle, 10);
+      }
+
+      function stopTranslation() {
+        // Stop the translation
+        clearInterval(intervalId);
+      }
+
+      function translateRectangle() {
+        const currentPosition = parseFloat(rectangle.style.left) || 0;
+        const newPosition = currentPosition + 1;
+        rectangle.style.left = `${newPosition}px`;
+      }
+    </script>
+  </body>
+</html>
